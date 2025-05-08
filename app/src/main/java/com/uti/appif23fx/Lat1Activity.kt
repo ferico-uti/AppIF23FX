@@ -23,6 +23,12 @@ class Lat1Activity : AppCompatActivity() {
         val btn_hitung = findViewById<Button>(R.id.btn_hitung)
         val btn_reset = findViewById<Button>(R.id.btn_reset)
 
+//        baca parameter "intent" dari Lat2Activity
+        edt_nilai1.setText(intent.getStringExtra("nilai1"))
+        edt_nilai2.setText(intent.getIntExtra("nilai2", 0).toString())
+
+        
+
 //        setup btn_hitung dan btn_reset
         btn_hitung.isEnabled = true
         btn_reset.isEnabled = false
@@ -30,35 +36,37 @@ class Lat1Activity : AppCompatActivity() {
 
 //        buat event
 //        1. untuk btn_hitung
-            btn_hitung.setOnClickListener {
+        btn_hitung.setOnClickListener {
 //                jika nilai 1, nilai 2 tidak diisi
-                if(edt_nilai1.text.toString().isEmpty() ||
-                    edt_nilai2.text.toString().isEmpty())
-                {
-                    Toast.makeText(this@Lat1Activity, "Nilai 1 dan Nilai 2 Harus Diisi !", Toast.LENGTH_SHORT).show()
-                }
+            if (edt_nilai1.text.toString().isEmpty() ||
+                edt_nilai2.text.toString().isEmpty()
+            ) {
+                Toast.makeText(
+                    this@Lat1Activity,
+                    "Nilai 1 dan Nilai 2 Harus Diisi !",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 //                jika nilai1, nilai2 terisi
-                else
-                {
+            else {
 
 //              ambil nilai 1 dan nilai 2 (input)
-                    val nilai1 = edt_nilai1.text.toString().toInt()
-                    val nilai2 = edt_nilai2.text.toString().toInt()
+                val nilai1 = edt_nilai1.text.toString().toInt()
+                val nilai2 = edt_nilai2.text.toString().toInt()
 
 //              hitung proses (nilai 1 + nilai 2)
-                    val hasil = nilai1 + nilai2
+                val hasil = nilai1 + nilai2
 
 //                tampilkan variabel "hasil" ke edt_hasil
 //                edt_hasil.setText(hasil.toString())
-                    edt_hasil.text = Editable.Factory.getInstance().newEditable(hasil.toString())
+                edt_hasil.text = Editable.Factory.getInstance().newEditable(hasil.toString())
 
-                    btn_hitung.isEnabled = false
-                    btn_reset.isEnabled = true
-                }
-
-
-
+                btn_hitung.isEnabled = false
+                btn_reset.isEnabled = true
             }
+
+
+        }
 
 //        2. untuk btn_reset
         btn_reset.setOnClickListener {
