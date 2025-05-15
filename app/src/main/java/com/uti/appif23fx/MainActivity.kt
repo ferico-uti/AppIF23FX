@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 //        buat event
 //        1. event btn1
         btn1.setOnClickListener {
-            Toast.makeText(this@MainActivity,"Tombol 1",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity,"Tombol 1 Dong",Toast.LENGTH_SHORT).show()
         }
 
 
